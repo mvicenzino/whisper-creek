@@ -446,14 +446,21 @@
     }
 
     .hero-tagline {
-      font-family: var(--font-body);
-      font-size: clamp(13px, 1.4vw, 15px);
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 48px);
       font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--parchment-dim);
-      max-width: 520px;
+      font-style: italic;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+      color: var(--parchment);
+      max-width: 620px;
       animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 1.0s both;
+    }
+    .hero-tagline span {
+      display: block;
+    }
+    .hero-tagline span:nth-child(2) {
+      color: var(--brass-light);
     }
 
     .hero-scroll-hint {
@@ -545,9 +552,9 @@
 
     .service-item {
       display: grid;
-      grid-template-columns: 48px 1fr;
+      grid-template-columns: 56px 1fr;
       gap: 24px;
-      align-items: start;
+      align-items: center;
       padding: 32px 0;
       border-bottom: 1px solid var(--rule-faint);
       transition: border-color 0.3s ease;
@@ -557,7 +564,7 @@
 
     .service-num {
       font-family: var(--font-display);
-      font-size: 32px;
+      font-size: 44px;
       font-weight: 300;
       color: rgba(184,149,90,0.2);
       padding-top: 0;
@@ -567,7 +574,7 @@
 
     .service-name {
       font-family: var(--font-display);
-      font-size: clamp(18px, 2vw, 24px);
+      font-size: clamp(24px, 2.8vw, 36px);
       font-weight: 400;
       color: var(--white);
       line-height: 1.3;
@@ -617,6 +624,7 @@
       aspect-ratio: 3/4;
       overflow: hidden;
       background: #151618;
+      max-width: 280px;
     }
     .portrait-frame::before {
       content: '';
@@ -625,16 +633,7 @@
       background: linear-gradient(160deg, rgba(184,149,90,0.05) 0%, transparent 50%);
       z-index: 1;
     }
-    /* Corner accent */
-    .portrait-frame::after {
-      content: '';
-      position: absolute;
-      top: 16px; left: 16px;
-      width: 60px; height: 60px;
-      border-top: 1px solid var(--brass-dim);
-      border-left: 1px solid var(--brass-dim);
-      z-index: 2;
-    }
+    /* Corner accent removed */
 
     .portrait-placeholder {
       width: 100%;
@@ -923,10 +922,17 @@
     }
     .footer-credit a {
       color: var(--brass);
-      transition: color 0.2s ease;
+      background: rgba(184,149,90,0.1);
+      border: 1px solid rgba(184,149,90,0.25);
+      padding: 4px 14px;
+      border-radius: 100px;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
     }
     .footer-credit a:hover {
       color: var(--brass-light);
+      background: rgba(184,149,90,0.18);
+      border-color: rgba(184,149,90,0.45);
     }
 
     /* =============================================
@@ -1043,8 +1049,8 @@
         margin-bottom: 24px;
       }
       .hero-tagline {
-        font-size: 12px;
-        letter-spacing: 0.08em;
+        font-size: clamp(20px, 5vw, 28px);
+        letter-spacing: 0;
       }
       .hero-scroll-hint {
         display: none;
@@ -1189,7 +1195,7 @@
         <span class="t-sub">Commercial Real Estate</span>
       </h1>
       <div class="hero-rule"></div>
-      <p class="hero-tagline">Trusted Relationships &nbsp;·&nbsp; Expert in Complexity &nbsp;·&nbsp; Seasoned Insight</p>
+      <p class="hero-tagline"><span>Trusted Relationships.</span><span>Expertise in Complexity.</span><span>Seasoned Insight.</span></p>
     </div>
 
     <div class="hero-scroll-hint">Scroll</div>
@@ -1201,51 +1207,32 @@
       <div class="services-header reveal">
         <p class="section-label">Capabilities</p>
         <h2 class="services-title">What<br>We Do</h2>
-        <p class="services-intro">Sophisticated advisory across the full capital structure — from origination to restructuring, with clarity at every stage.</p>
       </div>
 
       <div class="services-list">
         <div class="service-item reveal reveal-delay-1">
           <span class="service-num">01</span>
-          <div>
-            <p class="service-name">GP & Capital Source Advisory</p>
-            <p class="service-desc">Strategic counsel to general partners and capital sources on debt and equity partnership structures.</p>
-          </div>
+          <p class="service-name">GP & Capital Source Advisory</p>
         </div>
         <div class="service-item reveal reveal-delay-2">
           <span class="service-num">02</span>
-          <div>
-            <p class="service-name">JV & Document Negotiations</p>
-            <p class="service-desc">Comprehensive negotiation of joint venture agreements, term sheets, and loan documentation.</p>
-          </div>
+          <p class="service-name">JV & Document Negotiations</p>
         </div>
         <div class="service-item reveal reveal-delay-3">
           <span class="service-num">03</span>
-          <div>
-            <p class="service-name">Loan Restructurings</p>
-            <p class="service-desc">Complex restructuring solutions navigating distressed capital stacks and lender negotiations.</p>
-          </div>
+          <p class="service-name">Loan Restructurings</p>
         </div>
         <div class="service-item reveal reveal-delay-4">
           <span class="service-num">04</span>
-          <div>
-            <p class="service-name">Recapitalizations</p>
-            <p class="service-desc">Equity and debt recapitalization strategies to optimize balance sheets and unlock asset value.</p>
-          </div>
+          <p class="service-name">Recapitalizations</p>
         </div>
         <div class="service-item reveal reveal-delay-5">
           <span class="service-num">05</span>
-          <div>
-            <p class="service-name">Expert Witness</p>
-            <p class="service-desc">Authoritative expert witness testimony for real estate litigation and dispute resolution.</p>
-          </div>
+          <p class="service-name">Expert Witness</p>
         </div>
         <div class="service-item reveal reveal-delay-6">
           <span class="service-num">06</span>
-          <div>
-            <p class="service-name">Third-Party Valuation</p>
-            <p class="service-desc">Independent valuation analysis across all commercial real estate asset classes.</p>
-          </div>
+          <p class="service-name">Third-Party Valuation</p>
         </div>
       </div>
     </div>
@@ -1259,11 +1246,6 @@
         <div class="portrait-frame">
           <img src="headshot.png" alt="Aaron Welsh" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
         </div>
-        <div class="portrait-caption">
-          <p class="p-name">Aaron Welsh</p>
-          <p class="p-title">Founder &amp; Principal</p>
-          <p class="p-credential">B.S. Finance, with Distinction<br>The Pennsylvania State University</p>
-        </div>
       </div>
 
       <div class="about-bio">
@@ -1275,38 +1257,16 @@
         </h2>
 
         <p class="bio-para reveal reveal-delay-2">
-          Aaron Welsh brings three decades of experience throughout the entire capital structure, with a deep command of capital and property markets across all asset classes. His track record spans origination, structuring, restructuring, and principal investment at the highest levels of institutional real estate finance.
+          Aaron Welsh has 30-years of real estate experience throughout the entire capital structure and a deep understanding of capital and property markets across all asset classes.
         </p>
 
         <p class="bio-para reveal reveal-delay-3">
-          Most recently, Aaron was a Partner at Apollo Global Management in its real estate credit group. He served as Managing Director and Head of Origination, and Co-Head of Bank of America's Real Estate Structured Finance business, where he also led the investment bank's global real estate restructurings. Aaron was a Managing Director at Ladder Capital and previously held senior roles at Barclays Capital, Lehman Brothers, and JLL (Jones Lang Wootton).
+          Most recently, Aaron was a Partner at Apollo Global Management in its real estate credit group. Mr. Welsh was a Managing Director, head of origination, and Co-head of Bank of America's Real Estate Structured Finance business where he also managed the investment bank's global real estate restructurings. Aaron was also a Managing Director at Ladder Capital where he originated both debt and equity for the firm's balance sheet and previously worked at Barclays Capital, Lehman Brothers, and JLL (Jones Lang Wootton).
         </p>
 
         <p class="bio-para reveal reveal-delay-4">
-          Aaron is a vocal mental health advocate, volunteering with and supporting organizations committed to ending the stigma of mental illness.
+          Mr. Welsh has been honored multiple times in the top 10 of Commercial Observer's Power Finance, which underscores his standing as one of the industry's most influential leaders in real estate. He is a graduate, with distinction, of The Pennsylvania State University with a major in Finance and a minor in Real Estate. Aaron is a mental health advocate who volunteers and supports various organizations working to smash the stigma of mental illness.
         </p>
-
-        <div class="credentials-row reveal reveal-delay-4">
-          <div class="credential-item">
-            <span class="c-num">30+</span>
-            <span class="c-label">Years of Industry Experience</span>
-          </div>
-          <div class="credential-item">
-            <span class="c-num">6</span>
-            <span class="c-label">Major Institutional Platforms</span>
-          </div>
-          <div class="credential-item">
-            <span class="c-num">Top&nbsp;10</span>
-            <span class="c-label">Commercial Observer Power Finance</span>
-          </div>
-        </div>
-
-        <div class="recognition-banner reveal reveal-delay-5">
-          <p class="rec-label">Industry Recognition</p>
-          <p class="rec-text">
-            Honored multiple times in the top 10 of Commercial Observer's Power Finance — one of the industry's most prestigious rankings for real estate capital markets leadership.
-          </p>
-        </div>
       </div>
 
     </div>
@@ -1321,13 +1281,6 @@
           Let's<br>
           <em>Connect.</em>
         </h2>
-        <p class="contact-sub">
-          Whether you're navigating a complex capital structure, evaluating a restructuring, or seeking independent expertise — Aaron is available to discuss your situation.
-        </p>
-        <div class="contact-availability reveal reveal-delay-2">
-          <span class="avail-dot"></span>
-          Currently accepting new advisory engagements
-        </div>
       </div>
 
       <div>
