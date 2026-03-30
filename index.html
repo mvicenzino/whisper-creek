@@ -51,33 +51,8 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      cursor: none;
-    }
 
-    /* Custom cursor */
-    .cursor {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: var(--brass);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-      mix-blend-mode: normal;
     }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(184,149,90,0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.18s ease, width 0.25s ease, height 0.25s ease, border-color 0.2s ease;
-    }
-    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 12px; height: 12px; background: var(--brass-light); }
-    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; border-color: rgba(184,149,90,0.8); }
 
     a { color: inherit; text-decoration: none; }
     a:focus-visible { outline: 1px solid var(--brass); outline-offset: 3px; }
@@ -258,7 +233,7 @@
       gap: 5px;
       background: none;
       border: none;
-      cursor: none;
+      cursor: pointer;
       padding: 4px;
     }
     .nav-hamburger span {
@@ -981,9 +956,6 @@
         position: static;
         margin-bottom: 16px;
       }
-      .services-intro {
-        max-width: 100%;
-      }
 
       #about .container {
         grid-template-columns: 1fr;
@@ -1009,16 +981,10 @@
         gap: 20px;
       }
 
-      .recognition-banner {
-        padding: 24px;
-      }
     }
 
     /* Phones */
     @media (max-width: 540px) {
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
-
       :root {
         --section-pad: clamp(48px, 10vw, 80px);
         --gutter: 20px;
@@ -1057,19 +1023,19 @@
       }
 
       .service-item {
-        grid-template-columns: 36px 1fr;
+        grid-template-columns: 40px 1fr;
         gap: 16px;
         padding: 24px 0;
       }
-      .service-desc {
-        grid-column: 1 / -1;
+      .service-num {
+        font-size: 32px;
+      }
+      .service-name {
+        font-size: clamp(18px, 4.5vw, 24px);
       }
 
       .about-portrait-col {
-        max-width: 260px;
-      }
-      .portrait-caption .p-name {
-        font-size: 18px;
+        max-width: 220px;
       }
       .bio-headline {
         font-size: clamp(24px, 6vw, 36px);
@@ -1078,29 +1044,8 @@
       .bio-para {
         font-size: 14px;
       }
-      .credentials-row {
-        gap: 24px;
-        margin-top: 36px;
-        padding-top: 32px;
-      }
-      .credential-item .c-num {
-        font-size: 28px;
-      }
-      .credential-item .c-label {
-        font-size: 10px;
-      }
-      .recognition-banner {
-        padding: 20px;
-      }
-      .rec-text {
-        font-size: 15px;
-      }
-
       .contact-headline {
         font-size: clamp(32px, 9vw, 48px);
-      }
-      .contact-sub {
-        max-width: 100%;
       }
       .contact-item {
         padding: 20px 0;
@@ -1131,18 +1076,10 @@
       .contact-headline {
         font-size: 28px;
       }
-      .credentials-row {
-        flex-direction: column;
-        gap: 20px;
-      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
 
   <!-- Mobile Nav Overlay -->
   <nav class="mobile-nav" id="mobile-nav">
@@ -1195,7 +1132,7 @@
         <span class="t-sub">Commercial Real Estate</span>
       </h1>
       <div class="hero-rule"></div>
-      <p class="hero-tagline"><span>Trusted Relationships.</span><span>Expertise in Complexity.</span><span>Seasoned Insight.</span></p>
+      <p class="hero-tagline"><span>Trusted Relationships.</span><span>Expert in Complexity.</span><span>Seasoned Insight.</span></p>
     </div>
 
     <div class="hero-scroll-hint">Scroll</div>
@@ -1319,26 +1256,6 @@
   </footer>
 
   <script>
-    // ─── Custom cursor ───────────────────────────────
-    const cursor = document.getElementById('cursor');
-    const ring   = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
-    });
-
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
     // ─── Scroll-based nav ────────────────────────────
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
@@ -1401,12 +1318,6 @@
       spans[2].style.transform = '';
     }
 
-    // Disable custom cursor on touch devices
-    if ('ontouchstart' in window) {
-      document.body.style.cursor = 'auto';
-      cursor.style.display = 'none';
-      ring.style.display = 'none';
-    }
   </script>
 </body>
 </html>
