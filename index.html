@@ -412,6 +412,19 @@
       flex-shrink: 0;
     }
 
+    /* Whisper letter animation */
+    .t-whisper .whisper-char {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(8px);
+      animation: whisperIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    @keyframes whisperIn {
+      0%   { opacity: 0; filter: blur(8px); transform: translateY(4px); }
+      60%  { opacity: 0.7; filter: blur(2px); }
+      100% { opacity: 1; filter: blur(0px); transform: translateY(0); }
+    }
+
     .hero-rule {
       width: 1px;
       height: 60px;
@@ -1136,7 +1149,7 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Advisory &amp; Capital Markets</p>
       <h1 class="hero-title">
-        <span class="t-name"><span class="t-whisper">Whisper</span><span class="t-creek">Creek</span></span>
+        <span class="t-name"><span class="t-whisper" id="whisper-text">Whisper</span><span class="t-creek">Creek</span></span>
         <span class="t-sub">Commercial Real Estate</span>
       </h1>
       <div class="hero-rule"></div>
@@ -1273,6 +1286,18 @@
   </footer>
 
   <script>
+    // ─── Whisper letter animation ─────────────────
+    const whisperEl = document.getElementById('whisper-text');
+    const text = whisperEl.textContent;
+    whisperEl.textContent = '';
+    text.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      span.className = 'whisper-char';
+      span.textContent = char;
+      span.style.animationDelay = (0.5 + i * 0.09) + 's';
+      whisperEl.appendChild(span);
+    });
+
     // ─── Scroll-based nav ────────────────────────────
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
