@@ -864,6 +864,14 @@
       font-weight: 500;
       color: var(--brass-light);
       letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-logo svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
     }
 
     .footer-copy {
@@ -1242,7 +1250,16 @@
   <!-- ===================== FOOTER ===================== -->
   <footer>
     <div class="container">
-      <div class="footer-logo">WhisperCreek CRE</div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="90" height="90" rx="10" ry="10" stroke="#d4af72" stroke-width="2.5" fill="none"/>
+          <text font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="52" letter-spacing="-2">
+            <tspan x="12" y="66" fill="#f5f1eb">W</tspan>
+            <tspan x="40" y="66" fill="#d4af72">C</tspan>
+          </text>
+        </svg>
+        WhisperCreek CRE
+      </div>
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
