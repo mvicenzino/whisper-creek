@@ -251,10 +251,50 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 var(--gutter) clamp(60px, 9vw, 120px);
+      justify-content: center; /* Changed from flex-end to center for better mobile balance */
+      padding: 80px var(--gutter) 60px; /* Adjusted padding for better fit */
       position: relative;
       overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      #hero {
+        justify-content: center;
+        padding-top: 100px;
+      }
+      
+      .hero-title {
+        margin-bottom: 30px !important;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .hero-title .t-whisper, 
+      .hero-title .t-creek {
+        font-size: 42px !important; /* Smaller, clearer font for mobile */
+        line-height: 1.1 !important;
+      }
+      
+      .hero-title .t-sub {
+        font-size: 10px !important;
+        letter-spacing: 0.2em !important;
+        justify-content: center;
+      }
+
+      .hero-tagline {
+        font-size: 24px !important; /* Larger, readable taglines */
+        text-align: center;
+        margin: 0 auto;
+        line-height: 1.4 !important;
+      }
+      
+      .hero-rule {
+        margin: 0 auto 24px auto !important;
+      }
+      
+      .hero-monogram {
+        opacity: 0.1; /* Fade monogram further so text pops */
+      }
     }
 
     /* Building photo layer */
